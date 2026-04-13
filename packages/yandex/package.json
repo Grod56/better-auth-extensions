@@ -1,0 +1,24 @@
+{
+	"name": "yandex",
+	"version": "1.0.0",
+	"description": "Yandex extensions for better-auth",
+	"homepage": "https://github.com/Grod56/better-auth-extensions/tree/main/packages/yandex",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Grod56/better-auth-extensions.git",
+		"directory": "packages/yandex"
+	},
+	"keywords": [
+		"yandex",
+		"better-auth",
+		"auth",
+		"nextjs"
+	],
+	"license": "MIT",
+	"author": "Grod56",
+	"type": "commonjs",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest"
+	}
+}
