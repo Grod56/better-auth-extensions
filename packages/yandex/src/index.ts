@@ -1,7 +1,8 @@
-import { genericOAuth, GenericOAuthConfig } from "better-auth/plugins";
-import { betterAuth } from "better-auth";
+import type { GenericOAuthConfig } from "better-auth/plugins";
 
 type Scope = "login:email" | "login:info" | "login:avatar";
+
+export type YandexPermission = "email" | "user-info" | "profile-picture";
 
 function getScope(permission: YandexPermission): Scope {
 	switch (permission) {
@@ -14,17 +15,17 @@ function getScope(permission: YandexPermission): Scope {
 	}
 }
 
-export type YandexPermission = "email" | "user-info" | "profile-picture";
-
 /**
  * Returns Yandex config which may be used as a Generic OAuth plugin.
- * 
  * 
  * @example 
  *  import { betterAuth } from "better-auth"
  *  import { genericOAuth } from "better-auth/plugins"
 
- *  const yandexConfig = getYandexOAuthPlugin('my-client-id', 'my-client-secret')
+ *  const yandexConfig = getYandexOAuthPlugin(
+ *		process.env.YANDEX_CLIENT_ID,
+ *		process.env.YANDEX_CLIENT_SECRET
+ *  )
  *   
  *  export const auth = betterAuth({
  *      // ... other config options
@@ -48,7 +49,7 @@ export function getYandexOAuthPlugin(
 	const uniquePermissions: YandexPermission[] =
 		permissions != undefined
 			? [...new Set(permissions)]
-			: ["email", "user-info", "profile-picture"];
+			: [...new Set(["email", "user-info", "profile-picture"] as const)];
 	return {
 		providerId: "yandex",
 		clientId: clientId,
@@ -56,7 +57,7 @@ export function getYandexOAuthPlugin(
 		authorizationUrl: "https://oauth.yandex.com/authorize",
 		authorizationUrlParams: {
 			scope: uniquePermissions
-				.map((permission) => getScope(permission))
+				.map(permission => getScope(permission))
 				.join(" "),
 		},
 		tokenUrl: "https://oauth.yandex.com/token",
