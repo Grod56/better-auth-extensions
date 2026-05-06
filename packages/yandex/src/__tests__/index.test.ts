@@ -1,5 +1,5 @@
-import { YandexPermission, getYandexOAuthPlugin } from "../index.js";
-import { testData } from "./data.js";
+import { YandexPermission, getYandexOAuthPlugin } from "../";
+import { testData } from "./data";
 
 describe("getYandexOAuthPlugin()", () => {
 	it("produces corresponding output from input", () => {
