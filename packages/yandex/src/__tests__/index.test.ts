@@ -4,8 +4,8 @@ import { testData } from "./data.js";
 describe("getYandexOAuthPlugin()", () => {
 	it("produces corresponding output from input", () => {
 		const permissionScopeMap = new Map<YandexPermission, string>([
-			["user-info", "login:info"],
 			["email", "login:email"],
+			["user-info", "login:info"],
 			["profile-picture", "login:avatar"],
 		]);
 		const result = getYandexOAuthPlugin(

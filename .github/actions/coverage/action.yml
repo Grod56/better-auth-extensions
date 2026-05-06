@@ -10,6 +10,12 @@ runs:
     using: "composite"
 
     steps:
+        - name: Install Global Dependencies
+          shell: bash
+          run: |
+              echo Installing Global Dependencies
+              npm ci --workspaces=false
+
         - name: Install Package Dependencies
           shell: bash
           run: |
