@@ -10,6 +10,9 @@ on:
             - "packages/**/src/**"
         branches: [main]
 
+permissions:
+    contents: write
+
 jobs:
     generate-badges:
         runs-on: ubuntu-latest
