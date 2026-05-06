@@ -1,0 +1,50 @@
+name: "build action"
+description: "performs source code tests and source build"
+
+inputs:
+    package:
+        required: true
+        type: string
+
+runs:
+    using: "composite"
+
+    steps:
+        - name: Install Global Dependencies
+          shell: bash
+          run: |
+              echo Installing Global Dependencies
+              npm ci --workspaces=false
+
+        - name: Install Package Dependencies
+          shell: bash
+          run: |
+              echo Installing Package Dependencies 
+              npm ci --workspaces=false
+          working-directory: ./packages/${{ inputs.package }}
+
+        - name: Run Source Check
+          shell: bash
+          run: |
+              echo Running Source Check 
+              npm run check:src
+          working-directory: ./packages/${{ inputs.package }}
+
+        - name: Run Linter
+          shell: bash
+          run: |
+              echo Running Linter
+              npx eslint "packages/${{ inputs.package }}/src/**/*.{ts,tsx,js,jsx,cjs,mjs}"
+
+        - name: Run Format Check
+          shell: bash
+          run: |
+              echo Running Format Check
+              npx prettier --check "packages/${{ inputs.package }}/src/**"
+
+        - name: Run Build
+          shell: bash
+          run: |
+              echo Building the package
+              npm run build
+          working-directory: ./packages/${{ inputs.package }}

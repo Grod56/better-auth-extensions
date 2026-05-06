@@ -34,6 +34,18 @@
 		"clean": "del-cli ./dist",
 		"build": "npm run clean && rollup -c",
 		"prepack": "npm run build",
-		"test": "jest"
+		"prepublishOnly": "npm test",
+		"test": "jest",
+		"test:cov": "jest --coverage --coverageReporters='json-summary' --coverageProvider='v8'",
+		"lint:native": "tsc --noEmit",
+		"format": "prettier --write .",
+		"check:src": "npm run lint:native && npm run test"
+	},
+	"devDependencies": {
+		"@types/jest": "^30.0.0",
+		"@types/node": "^25.6.0",
+		"globals": "^17.6.0",
+		"jest": "^30.3.0",
+		"ts-jest": "^29.4.9"
 	}
 }

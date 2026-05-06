@@ -1,0 +1,32 @@
+name: refresh coverage badges
+
+on:
+    push:
+        paths:
+            - "packages/**/src/**"
+        branches: [main]
+    pull_request:
+        paths:
+            - "packages/**/src/**"
+        branches: [main]
+
+jobs:
+    generate-badges:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - uses: actions/setup-node@v6
+              with:
+                  node-version: "24"
+            - uses: "./.github/actions/coverage"
+              with:
+                  package: yandex
+
+            - name: Generating coverage badges
+              uses: jpb06/coverage-badges-action@latest
+              with:
+                  coverage-summary-path: |
+                      ./packages/yandex/coverage/coverage-summary.json
+                  output-folder: |
+                      ./badges
+                  badges-labels-prefix: coverage

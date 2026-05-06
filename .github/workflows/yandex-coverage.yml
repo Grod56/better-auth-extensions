@@ -1,0 +1,25 @@
+name: coverage
+on:
+    push:
+        paths:
+            - "packages/yandex/src/**"
+        branches: [main]
+    pull_request:
+        paths:
+            - "packages/yandex/src/**"
+        branches: [main]
+
+jobs:
+    call-coverage:
+        name: "'yandex' coverage"
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v6
+            - uses: actions/setup-node@v6
+              with:
+                  node-version: "24"
+
+            - uses: ./.github/actions/coverage/
+              with:
+                  package: yandex

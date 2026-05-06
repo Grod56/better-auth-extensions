@@ -1,0 +1,25 @@
+name: "coverage action"
+description: "performs source code tests with coverage"
+
+inputs:
+    package:
+        required: true
+        type: string
+
+runs:
+    using: "composite"
+
+    steps:
+        - name: Install Package Dependencies
+          shell: bash
+          run: |
+              echo Installing Package Dependencies 
+              npm ci --workspaces=false
+          working-directory: ./packages/${{ inputs.package }}
+
+        - name: Run Coverage
+          shell: bash
+          run: |
+              echo Running Coverage
+              npm run test:cov
+          working-directory: ./packages/${{ inputs.package }}

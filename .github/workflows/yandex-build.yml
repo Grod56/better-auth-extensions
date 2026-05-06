@@ -1,0 +1,27 @@
+name: build
+on:
+    push:
+        paths:
+            - "packages/yandex/**"
+        branches:
+            - "**"
+    pull_request:
+        paths:
+            - "packages/yandex/**"
+        branches: ["main"]
+    workflow_call:
+
+jobs:
+    call-build:
+        name: "'yandex' build"
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v6
+            - uses: actions/setup-node@v6
+              with:
+                  node-version: "24"
+
+            - uses: ./.github/actions/build/
+              with:
+                  package: yandex
