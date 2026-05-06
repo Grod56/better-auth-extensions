@@ -47,8 +47,11 @@ Setting up the `better-auth` client:
 
 ```typescript
 import { createAuthClient } from "better-auth/react";
+import { genericOAuthClient } from "better-auth/client/plugins";
 
-export const { signIn, signUp, useSession } = createAuthClient();
+export const { signIn, signUp, useSession } = createAuthClient({
+	plugins: [genericOAuthClient()],
+});
 ```
 
 Using the Yandex plugin to sign in:
