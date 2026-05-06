@@ -36,7 +36,7 @@
 		"prepack": "npm run build",
 		"prepublishOnly": "npm test",
 		"test": "jest",
-		"test:cov": "jest --coverage --coverageReporters='json-summary' --coverageProvider='v8'",
+		"test:cov": "jest --coverage --coverageReporters=json-summary --coverageProvider=v8",
 		"lint:native": "tsc --noEmit",
 		"format": "prettier --write .",
 		"check:src": "npm run lint:native && npm run test"
