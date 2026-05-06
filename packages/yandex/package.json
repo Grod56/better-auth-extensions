@@ -48,6 +48,7 @@
 		"globals": "^17.6.0",
 		"jest": "^30.3.0",
 		"jest-environment-jsdom": "^30.3.0",
+		"jest-ts-webcompat-resolver": "^1.0.1",
 		"ts-jest": "^29.4.9",
 		"ts-node": "^10.9.2"
 	}
