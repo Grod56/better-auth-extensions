@@ -9,4 +9,5 @@ export default {
 		...tsJestTransformCfg,
 	},
 	testPathIgnorePatterns: ["\\\\node_modules\\\\", "data.ts"],
+	modulePaths: ["./src"],
 };
