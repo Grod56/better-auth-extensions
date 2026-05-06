@@ -1,6 +1,6 @@
 {
 	"name": "@better-auth-extensions/yandex",
-	"version": "0.1.2",
+	"version": "1.0.0",
 	"description": "Yandex extensions for better-auth",
 	"homepage": "https://github.com/Grod56/better-auth-extensions/tree/main/packages/yandex",
 	"repository": {
