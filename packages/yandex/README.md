@@ -79,4 +79,4 @@ export default function SignInButton({ endpoint }: { endpoint: string }) {
 
 ## See More
 
-- [`Better-Auth Documentation`](https://better-auth.com/docs/installation)
+- [Better-Auth Documentation](https://better-auth.com/docs/installation)
