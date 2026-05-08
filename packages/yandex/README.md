@@ -14,7 +14,8 @@ npm install @better-auth-extensions/yandex
 
 ### `getYandexOAuthPlugin(clientId, clientSecret, permissions?)`
 
-Produces Yandex [`GenericOAuthConfig`](https://better-auth.com/docs/plugins/generic-oauth) object which may be used as a Generic OAuth plugin. It takes in the Client ID, and Client Secret of the Yandex Application and an optional list of permissions to be used for the application.
+Produces Yandex [`GenericOAuthConfig`](https://better-auth.com/docs/plugins/generic-oauth) object which may be used as a Generic OAuth plugin.
+It takes in the Client ID, and Client Secret of the Yandex Application and an optional list of permissions to be used for the application.
 
 #### Example
 
@@ -49,7 +50,7 @@ Setting up the `better-auth` client:
 import { createAuthClient } from "better-auth/react";
 import { genericOAuthClient } from "better-auth/client/plugins";
 
-export const { signIn, signUp, useSession } = createAuthClient({
+export const { signIn, useSession } = createAuthClient({
 	plugins: [genericOAuthClient()],
 });
 ```
@@ -76,6 +77,10 @@ export default function SignInButton({ endpoint }: { endpoint: string }) {
 	);
 }
 ```
+
+## Note
+
+The plugin mounts a route to handle the OAuth callback `/oauth2/callback/yandex`. This means by default `${YOUR_BASE_URL}/api/auth/oauth2/callback/yandex` will be used as the callback URL. Make sure your OAuth provider is configured to use this URL.
 
 ## See More
 
