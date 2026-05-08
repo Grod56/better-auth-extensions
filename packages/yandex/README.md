@@ -14,8 +14,8 @@ npm install @better-auth-extensions/yandex
 
 ### `getYandexOAuthPlugin(clientId, clientSecret, permissions?)`
 
-Produces Yandex [`GenericOAuthConfig`](https://better-auth.com/docs/plugins/generic-oauth) object which may be used as a Generic OAuth plugin.
-It takes in the Client ID, and Client Secret of the Yandex Application and an optional list of permissions to be used for the application.
+Produces a Yandex-tailored configuration object which may be used as a [Generic OAuth plugin](https://better-auth.com/docs/plugins/generic-oauth).
+It takes in the Client ID, and Client Secret of the Yandex OAuth Application and an optional list of access permissions to be requested from the application.
 
 #### Example
 
@@ -26,6 +26,7 @@ Including the Yandex plugin in the `better-auth` configuration:
 ```typescript
 import { betterAuth } from "better-auth";
 import { genericOAuth } from "better-auth/plugins";
+import { getYandexOAuthPlugin } from "@better-auth-extensions/yandex";
 
 const yandexConfig = getYandexOAuthPlugin(
 	process.env.YANDEX_CLIENT_ID,
@@ -80,7 +81,7 @@ export default function SignInButton({ endpoint }: { endpoint: string }) {
 
 ## Note
 
-The plugin mounts a route to handle the OAuth callback `/oauth2/callback/yandex`. This means by default `${YOUR_BASE_URL}/api/auth/oauth2/callback/yandex` will be used as the callback URL. Make sure your OAuth provider is configured to use this URL.
+The plugin mounts a route to handle the OAuth callback: `/oauth2/callback/yandex`. This means that `${YOUR_BASE_URL}/api/auth/oauth2/callback/yandex` will be used as the callback URL. Make sure your OAuth provider is configured to use this URL.
 
 ## See More
 
