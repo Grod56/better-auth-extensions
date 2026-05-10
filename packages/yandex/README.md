@@ -1,6 +1,6 @@
 # better-auth-extensions/yandex
 
-[![build](https://github.com/Grod56/better-auth-extensions/actions/workflows/yandex-build.yml/badge.svg)](https://github.com/Grod56/better-auth-extensions/actions/workflows/yandex-build.yml) [![npm](https://img.shields.io/npm/v/%40better-auth-extensions%2Fyandex)](https://www.npmjs.com/package/@better-auth-extensions/yandex) [![NPM Downloads](https://img.shields.io/npm/d18m/%40better-auth-extensions%2Fyandex)](https://www.npmjs.com/package/better-auth-extensions/yandex)
+[![build](https://github.com/Grod56/better-auth-extensions/actions/workflows/yandex-build.yml/badge.svg)](https://github.com/Grod56/better-auth-extensions/actions/workflows/yandex-build.yml) [![npm](https://img.shields.io/npm/v/%40better-auth-extensions%2Fyandex)](https://www.npmjs.com/package/@better-auth-extensions/yandex) [![NPM Downloads](https://img.shields.io/npm/d18m/%40better-auth-extensions%2Fyandex)](https://www.npmjs.com/package/@better-auth-extensions/yandex)
 
 Yandex extensions and plugins for better-auth.
 
