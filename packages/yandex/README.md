@@ -43,7 +43,7 @@ export const auth = betterAuth({
 });
 ```
 
-Setting up the `better-auth` client:
+Setting up the `better-auth` client _(NOTE: This only applies for versions of BetterAuth prior to 1.7.0. `genericOAuthClient()` is no longer available as of version 1.7.0)_:
 
 `lib/auth-client.ts`
 
@@ -60,17 +60,23 @@ Using the Yandex plugin to sign in:
 
 `lib/components/SignInButton.tsx`
 
-```tsx
+```diff
 import { signIn } from "../auth-client";
 
 export default function SignInButton({ endpoint }: { endpoint: string }) {
 	return (
 		<button
 			onClick={() => {
-				signIn.oauth2({
-					providerId: "yandex",
-					callbackURL: endpoint,
-				});
+				// Before v1.7.0
+-				signIn.oauth2({
+-					providerId: "yandex",
+-					callbackURL: endpoint,
+-				});
+				// v1.7.0+
++				signIn.social({
++					provider: "yandex",
++					callbackURL: endpoint,
++				});
 			}}
 		>
 			{"Sign in with Yandex"}
@@ -81,7 +87,7 @@ export default function SignInButton({ endpoint }: { endpoint: string }) {
 
 ## Note
 
-The plugin mounts a route to handle the OAuth callback: `/oauth2/callback/yandex`. This means that `${YOUR_BASE_URL}/api/auth/oauth2/callback/yandex` will be used as the callback URL. Make sure your OAuth provider is configured to use this URL.
+The plugin mounts a route to handle the OAuth callback: ~~`/oauth2/callback/yandex`~~ `/callback/yandex`. This means that ~~`${YOUR_BASE_URL}/api/auth/oauth2/callback/yandex`~~ `${YOUR_BASE_URL}/api/auth/callback/yandex` will be used as the callback URL. Make sure your OAuth provider is configured to use this URL.
 
 ## See More
 
